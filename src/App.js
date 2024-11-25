@@ -203,25 +203,25 @@ const App = () => {
             Our Ventures
           </h4>
           <div className="company-logos-list">
-            <a href="https://joyrefinery.ae/" target="_blank" rel="noopener noreferrer">
+            <a href="https://bullandbearz.com/" target="_blank" rel="noopener noreferrer">
               <img src={Bb} alt="Company 1" className="company-logo" />
             </a>
-            <a href="https://advanz-tech.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://masca.ae/" target="_blank" rel="noopener noreferrer">
               <img src={Masca} alt="Company 2" className="company-logo" />
             </a>
-            <a href="https://advanz-tech.com/" target="_blank" rel="noopener noreferrer">
+            <a href="#" target="_blank" rel="noopener noreferrer">
               <img src={Dr} alt="Company 2" className="company-logo" />
             </a>
-            <a href="https://advanz-tech.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://shopcin.com/" target="_blank" rel="noopener noreferrer">
               <img src={Shopcin} alt="Company 2" className="company-logo" />
             </a>
-            <a href="https://advanz-tech.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://taseesrealestate.ae/" target="_blank" rel="noopener noreferrer">
               <img src={Tasees} alt="Company 2" className="company-logo" />
             </a>
-            <a href="https://advanz-tech.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://joyrefinery.ae/" target="_blank" rel="noopener noreferrer">
               <img src={Joy} alt="Company 2" className="company-logo" />
             </a>
-            <a href="https://advanz-tech.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://wpmoda.com/" target="_blank" rel="noopener noreferrer">
               <img src={Wp} alt="Company 2" className="company-logo" />
             </a>
           </div>

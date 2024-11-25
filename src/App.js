@@ -1,103 +1,245 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
-import profileLogo from '../src/profile.jpg'; // Replace with your logo image
-import WhatsApp from '../src/whatsapp.png';
-import Instagram from '../src/instagram.png';
-import Facebook from '../src/facebook.png';
-import LinkedIn from '../src/linkedin.png';
-import XIcon from '../src/twitter.png';
-import GlobeIcon from '../src/web.png';
+import profileLogo from './logo.png'; // Replace with your profile image
+import Phone from './call.png';
+import WhatsApp from './whatsapp.png';
+import Email from './email.png';
+import Web from './web.png';
+import Background from './bg.jpg';
+import Instagram from './instagram.png';
+import Company1 from './joy.png'; // Replace with your company logos
+import Company2 from './advance.png';
+import Company3 from './joy.png';
+import Add from './add.png';
+import Bb from './CLIENT//bullandbearz.png'
+import Dr from './CLIENT/alrowaad.png'
+import Masca from './CLIENT/masca.jpg'
+import Wp from './CLIENT/wpmoda.png'
+import Shopcin from './CLIENT/shopcin.png'
+import Tasees from './CLIENT/tasees.png'
+import Joy from './CLIENT/jr.png'
+// import Ts from './CLIENT/tsp.png'
+import BgImage from './bgimg.jpg'
 
-function App() {
+
+const App = () => {
+  const [showContactOptions, setShowContactOptions] = useState(false);
+  const [showWhatsAppPopup, setShowWhatsAppPopup] = useState(false);
+  const [showCallPopup, setShowCallPopup] = useState(false);
+
+
+  const callPopupRef = useRef(null);
+  const whatsappPopupRef = useRef(null);
+
+
+  const toggleContactOptions = () => {
+    setShowContactOptions(!showContactOptions);
+    if (!showContactOptions) {
+      setShowWhatsAppPopup(false); // Close WhatsApp popup when Contact Options is opened
+    }
+  };
+
+  const toggleWhatsAppPopup = () => {
+    setShowWhatsAppPopup(!showWhatsAppPopup);
+    if (!showWhatsAppPopup) {
+      setShowContactOptions(false); // Close Contact Options when WhatsApp popup is opened
+    }
+  };
+
+  const toggleCallPopup = () => {
+    setShowCallPopup(!showCallPopup);
+    if (!showCallPopup) {
+      setShowContactOptions(false); // Close Contact Options when WhatsApp popup is opened
+    }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        callPopupRef.current &&
+        !callPopupRef.current.contains(event.target) &&
+        showCallPopup
+      ) {
+        setShowCallPopup(false);
+      }
+      if (
+        whatsappPopupRef.current &&
+        !whatsappPopupRef.current.contains(event.target) &&
+        showWhatsAppPopup
+      ) {
+        setShowWhatsAppPopup(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showCallPopup, showWhatsAppPopup]);
+
+
   return (
     <div className="App">
-      <div className="profile-card">
-        <div className="profile-container">
-          <img src={profileLogo} alt="Nexura IT Solutions" className="profile-logo" />
-        </div>
-        <h3 className="profile-name">
-          Your Digital Partner
-        </h3>
-
-        <p style={{color:"#fff", fontSize:"12px"}}>Connect with us</p>
-        <div className="social-icons">
-          <a href="https://wa.me/+971507072116" target="_blank" rel="noreferrer">
-            <img src={WhatsApp} alt="WhatsApp" className="social-icon" />
-          </a>
-          <a href="https://www.instagram.com/nexura.ae/" target="_blank" rel="noreferrer">
-            <img src={Instagram} alt="Instagram" className="social-icon" />
-          </a>
-          <a href="https://www.facebook.com/nexuraIT" target="_blank" rel="noreferrer">
-            <img src={Facebook} alt="Facebook" className="social-icon" />
-          </a>
-          <a href="https://www.linkedin.com/company/nexura-it" target="_blank" rel="noreferrer">
-            <img src={LinkedIn} alt="LinkedIn" className="social-icon" />
-          </a>
-          <a href="https://x.com/nexuraIt" target="_blank" rel="noreferrer">
-            <img src={XIcon} alt="X (formerly Twitter)" className="social-icon" />
-          </a>
-          <a href="https://nexura.ae" target="_blank" rel="noreferrer">
-            <img src={GlobeIcon} alt="Website" className="social-icon" />
-          </a>
+      <div className="profile-card" style={{ background: '#000' }}>
+        {/* vCard Download Icon (inside the card) */}
+        <div className="vcard-download">
+          <img
+            src={Add}
+            alt="Save Contact"
+            className="download-icon"
+            onClick={toggleContactOptions}
+            title="Save Contact"
+          />
+          {showContactOptions && (
+            <div className="contact-options">
+              <a href="/sulthan.vcf" download="sulthan AL Shehhi.vcf">
+                Sulthan Alehshhi (CEO)
+              </a>
+              <a href="/rohith.vcf" download="Rohith.vcf">
+               Rohith Sagar M (IT Manager)
+              </a>
+            </div>
+          )}
         </div>
 
-        <h2 className="projects-title">Our Projects</h2>
-        <div className="projects-grid">
-          <a href="https://example.com/project1" target="_blank" rel="noreferrer">
-            <img src="https://res.cloudinary.com/dqasmnsve/image/upload/v1728291089/Artboard_1_vh5kci.jpg" alt="Project 1" className="project-image" />
-          </a>
-          <a href="https://example.com/project2" target="_blank" rel="noreferrer">
-            <img src="https://res.cloudinary.com/dqasmnsve/image/upload/v1728291089/Artboard_2_wknepd.jpg" alt="Project 2" className="project-image" />
-          </a>
-          <a href="https://example.com/project3" target="_blank" rel="noreferrer">
-            <img src="https://res.cloudinary.com/dqasmnsve/image/upload/v1728291091/Artboard_3_l5gdv3.jpg" alt="Project 3" className="project-image" />
-          </a>
-          <a href="https://example.com/project4" target="_blank" rel="noreferrer">
-            <img src="https://res.cloudinary.com/dqasmnsve/image/upload/v1728291091/Artboard_5_rulcoq.jpg" alt="Project 4" className="project-image" />
-          </a>
-          <a href="https://example.com/project5" target="_blank" rel="noreferrer">
-            <img src="https://res.cloudinary.com/dqasmnsve/image/upload/v1728291180/mango_smoothie_SP_rhu9al.jpg" alt="Project 5" className="project-image" />
-          </a>
-          <a href="https://example.com/project6" target="_blank" rel="noreferrer">
-            <img src="https://res.cloudinary.com/dqasmnsve/image/upload/v1728291180/addidas_social_ad_-02_up7y14.jpg" alt="Project 6" className="project-image" />
-          </a>
+        {/* Background Section */}
+        <div
+          className="card-background"
+          style={{
+            backgroundImage: `url(${BgImage})`,
+          }}
+        >
+          <div className="profile-image-container">
+            <img src={profileLogo} alt="Profile" className="profile-image" />
+          </div>
+        </div>
 
-          <a href="https://example.com/project1" target="_blank" rel="noreferrer">
-            <img src="https://res.cloudinary.com/dqasmnsve/image/upload/v1728291089/Artboard_1_vh5kci.jpg" alt="Project 1" className="project-image" />
-          </a>
-          <a href="https://example.com/project2" target="_blank" rel="noreferrer">
-            <img src="https://res.cloudinary.com/dqasmnsve/image/upload/v1728291089/Artboard_2_wknepd.jpg" alt="Project 2" className="project-image" />
-          </a>
-          <a href="https://example.com/project3" target="_blank" rel="noreferrer">
-            <img src="https://res.cloudinary.com/dqasmnsve/image/upload/v1728291091/Artboard_3_l5gdv3.jpg" alt="Project 3" className="project-image" />
-          </a>
-          <a href="https://example.com/project4" target="_blank" rel="noreferrer">
-            <img src="https://res.cloudinary.com/dqasmnsve/image/upload/v1728291091/Artboard_5_rulcoq.jpg" alt="Project 4" className="project-image" />
-          </a>
-          <a href="https://example.com/project5" target="_blank" rel="noreferrer">
-            <img src="https://res.cloudinary.com/dqasmnsve/image/upload/v1728291180/mango_smoothie_SP_rhu9al.jpg" alt="Project 5" className="project-image" />
-          </a>
+        {/* Profile Information */}
+        <div className="profile-info">
+          <h1 className="profile-name" style={{ color: '#fff' }}>
+            SquareCom IT Solution
+          </h1>
+          <h2 className="profile-title" style={{ color: 'grey' }}>Your Digital Partner          </h2>
+          <br />
+
+          {/* Social Links */}
+          <div className="social-links">
+            {/* <a href="tel:+971581276647" target="_blank" rel="noopener noreferrer">
+              <img src={Phone} alt="Call" className="social-icon" />
+            </a> */}
 
 
-          <a href="https://example.com/project1" target="_blank" rel="noreferrer">
-            <img src="https://res.cloudinary.com/dqasmnsve/image/upload/v1728291089/Artboard_1_vh5kci.jpg" alt="Project 1" className="project-image" />
-          </a>
-          <a href="https://example.com/project2" target="_blank" rel="noreferrer">
-            <img src="https://res.cloudinary.com/dqasmnsve/image/upload/v1728291089/Artboard_2_wknepd.jpg" alt="Project 2" className="project-image" />
-          </a>
-          <a href="https://example.com/project3" target="_blank" rel="noreferrer">
-            <img src="https://res.cloudinary.com/dqasmnsve/image/upload/v1728291091/Artboard_3_l5gdv3.jpg" alt="Project 3" className="project-image" />
-          </a>
-          <a href="https://example.com/project4" target="_blank" rel="noreferrer">
-            <img src="https://res.cloudinary.com/dqasmnsve/image/upload/v1728291091/Artboard_5_rulcoq.jpg" alt="Project 4" className="project-image" />
-          </a>
-          <a href="https://example.com/project5" target="_blank" rel="noreferrer">
-            <img src="https://res.cloudinary.com/dqasmnsve/image/upload/v1728291180/mango_smoothie_SP_rhu9al.jpg" alt="Project 5" className="project-image" />
+            <div onClick={toggleCallPopup} style={{ cursor: 'pointer' }}>
+              <img src={Phone} alt="WhatsApp" className="social-icon" />
+            </div>
+
+            <div onClick={toggleWhatsAppPopup} style={{ cursor: 'pointer' }}>
+              <img src={WhatsApp} alt="WhatsApp" className="social-icon" />
+            </div>
+            <a href="mailto:info@squarecom.ae" target="_blank" rel="noopener noreferrer">
+              <img src={Email} alt="Email" className="social-icon" />
+            </a>
+            <a href="https://squarecom.ae" target="_blank" rel="noopener noreferrer">
+              <img src={Web} alt="Web" className="social-icon" />
+            </a>
+            <a href="https://www.instagram.com/squarecom.ae/" target="_blank" rel="noopener noreferrer">
+              <img src={Instagram} alt="Instagram" className="social-icon" />
+            </a>
+          </div>
+        </div>
+
+
+        {showWhatsAppPopup && (
+  <div className="whatsapp-popup">
+    <div className="popup-header">
+      <h3>Contact via WhatsApp</h3>
+      <button onClick={toggleWhatsAppPopup} className="close-button">
+        &times;
+      </button>
+    </div>
+    <div className="popup-content">
+      <a href="https://wa.me/971552949444" target="_blank" rel="noopener noreferrer">
+        <img src={WhatsApp} alt="WhatsApp" />
+        Sulthan Alehshhi (CEO)
+      </a>
+      <a href="https://wa.me/971507072116" target="_blank" rel="noopener noreferrer">
+        <img src={WhatsApp} alt="WhatsApp" />
+        Rohith Sagar M (IT Manager)
+      </a>
+    </div>
+  </div>
+)}
+
+
+
+
+{showCallPopup && (
+  <div className="whatsapp-popup">
+    <div className="popup-header">
+    <h3>Get in Touch Over a Call</h3>
+    <button onClick={toggleCallPopup} className="close-button">
+        &times;
+      </button>
+    </div>
+    <div className="popup-content">
+      <a href="tel:+971552949444">
+        <img src={Phone} alt="Call Sulthan" />
+        Sulthan Alehshhi (CEO)
+      </a>
+      <a href="tel:+971507072116">
+        <img src={Phone} alt="Call Rohith" />
+        Rohith Sagar M (IT Manager)
+      </a>
+    </div>
+  </div>
+)}
+
+
+
+        {/* Companies Section */}
+        <div className="company-logos" style={{ paddingBottom: '10px' }}>
+          <h4 className="company-logos-title" style={{ color: 'lightgrey' }}>
+            Our Ventures
+          </h4>
+          <div className="company-logos-list">
+            <a href="https://joyrefinery.ae/" target="_blank" rel="noopener noreferrer">
+              <img src={Bb} alt="Company 1" className="company-logo" />
+            </a>
+            <a href="https://advanz-tech.com/" target="_blank" rel="noopener noreferrer">
+              <img src={Masca} alt="Company 2" className="company-logo" />
+            </a>
+            <a href="https://advanz-tech.com/" target="_blank" rel="noopener noreferrer">
+              <img src={Dr} alt="Company 2" className="company-logo" />
+            </a>
+            <a href="https://advanz-tech.com/" target="_blank" rel="noopener noreferrer">
+              <img src={Shopcin} alt="Company 2" className="company-logo" />
+            </a>
+            <a href="https://advanz-tech.com/" target="_blank" rel="noopener noreferrer">
+              <img src={Tasees} alt="Company 2" className="company-logo" />
+            </a>
+            <a href="https://advanz-tech.com/" target="_blank" rel="noopener noreferrer">
+              <img src={Joy} alt="Company 2" className="company-logo" />
+            </a>
+            <a href="https://advanz-tech.com/" target="_blank" rel="noopener noreferrer">
+              <img src={Wp} alt="Company 2" className="company-logo" />
+            </a>
+          </div>
+        </div>
+        <div className="powered-by">
+          Powered by
+          <a
+            href="https://squarecom.ae"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="powered-by-link"
+          >
+            Squarecom IT Solution
           </a>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default App;

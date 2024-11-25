@@ -1,0 +1,210 @@
+/* General Reset */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f4;
+  }
+  
+  /* Overlay for the Popup */
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Popup Container */
+  .popup-container {
+    background: #ffffff;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+    animation: slideIn 0.3s ease;
+  }
+  
+  /* Popup Header */
+  .popup-header {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 15px;
+  }
+  
+  /* Close Button */
+  .close-popup-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .close-popup-button:hover {
+    color: #333;
+  }
+  
+ /* Styling for the contact popup container */
+.contact-options {
+    position: absolute;
+    top: 50px; /* Adjust to position correctly near the button */
+    right: 10px;
+    background: #1e1e2f; 
+    border-radius: 8px;
+    padding: 15px 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    border-radius: 25px;
+    
+  }
+  
+  /* Links inside the popup */
+  .contact-options a {
+    display: block;
+    color: #fff; /* White text color for visibility */
+    font-size: 14px;
+    text-decoration: none;
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: 150px;
+    border-radius: 25px;
+  }
+  
+  /* Different background for each contact link */
+  .contact-options a:nth-child(1) {
+    background: #0073e6; /* Blue for Contact 1 */
+  }
+  
+  .contact-options a:nth-child(2) {
+    background: #28a745; /* Green for Contact 2 */
+  }
+  
+  /* Hover effect for the links */
+  .contact-options a:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    background: #005bb5; /* Darker blue for Contact 1 */
+  }
+  
+  /* Close icon adjustments */
+  .download-icon {
+    width: 50px;
+    height: 20px;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  /* Icon in popup */
+  .download-icon:hover {
+    color: #888;
+  }
+  
+
+
+/* WhatsApp Popup */
+.whatsapp-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #160130, #3c0a47);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    width: 300px;
+    z-index: 1000;
+    animation: scaleIn 0.3s ease-out;
+    color: #fff;
+}
+
+  .whatsapp-popup h3 {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .close-button:hover {
+    transform: rotate(90deg);
+  }
+  
+  .popup-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .popup-content a {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    color: #128c7e;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.2s ease;
+  }
+  
+  .popup-content a:hover {
+    background: #e5e5e5;
+  }
+  
+  .popup-content a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  
+  /* Scale-In Animation */
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8) translate(-50%, -50%);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translate(-50%, -50%);
+    }
+  }
+  

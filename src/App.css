@@ -1,266 +1,239 @@
-/* Scrollbar Styles */
-.projects-grid {
-  --sb-track-color: #232E33;
-  --sb-thumb-color: #6BAF8D;
-  --sb-size: 0px; /* Set a visible size for the scrollbar */
-  overflow-y: auto; /* Allow vertical scrolling */
-  max-height: 60vh; /* Set a max height for the grid */
-}
-
-.projects-grid::-webkit-scrollbar {
-  width: var(--sb-size);
-}
-
-.projects-grid::-webkit-scrollbar-track {
-  background: var(--sb-track-color);
-  border-radius: 3px;
-}
-
-.projects-grid::-webkit-scrollbar-thumb {
-  background: var(--sb-thumb-color);
-  border-radius: 3px;
-}
-
-@supports not selector(::-webkit-scrollbar) {
-  .projects-grid {
-    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
-    scrollbar-width: thin;
-  }
-}
-
 /* Global Styles */
-.App {
-  display: flex;
-  flex-direction: column; /* Stack content vertically */
-  justify-content: center;
-  align-items: center;
-  background-color: #292929;
-  font-family: 'Poppins', sans-serif;
-  padding: 0px;
-  margin: 0 auto;
-  height: 100vh;
-  overflow-y: hidden;
-}
-
 body {
   margin: 0;
-}
-
-/* Profile Container */
-.profile-container {
-  position: relative;
-  display: inline-block; 
-  width: 150px; /* Adjust as needed */
-  height: 150px;
-  border-radius: 50%; /* Make the container circular */
-  /* background: linear-gradient(45deg, #ff6ec4, #7873f5);  */
-  padding: 5px; 
-  box-sizing: border-box;
-  overflow: hidden; 
-  box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px ;
-  z-index: 0;
-}
-
-/* Profile Logo */
-.profile-logo {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%; 
-  object-fit: cover; 
-  background-color: #000; 
-  z-index: 1;
-}
-
-
-.profile-container::before {
-  content: '';
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  width: calc(100% + 8px);
-  height: calc(100% + 8px);
-  border-radius: 50%;
-  background: linear-gradient(45deg, #0300d4  , #e900b6  );
-  z-index: -4;
-  box-sizing: border-box;
-  border: 5px solid transparent;
-  background-clip: padding-box;
+  font-family: 'Poppins', sans-serif;
+  background-color: #212121;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 /* Profile Card */
 .profile-card {
-  background-color: #000;
-  padding: 50px 30px 50px 30px;
+  background: #ffffff;
+  width: 390px;
   border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* Clips elements outside the card */
   text-align: center;
-  /* box-shadow: rgba(0, 0, 0, 1) 0px -50px 36px -28px ;  */
-  box-shadow: rgba(0, 0, 0, 0.95) 0px -50px 36px -28px inset;
-   max-width: 400px;
-  width: 100%;
-  max-height: 570px;
-  margin-bottom: 30px;
-  margin-top: 50px;
+  position: relative; /* Allows .vcard-download to position absolutely within this element */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-height: "90dvh";
 }
 
-/* Profile Name */
-.profile-name {
-  font-size: 20px;
-  color: #ffffff;
-  font-weight: bold;
-  margin-top: 25px;
-  font-family:"Calibri", sans-serif;
-  word-spacing: 2px;
-  letter-spacing: 3px;
+.profile-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* Social Icons */
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+/* Card Background */
+.card-background {
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
 
-.social-icon {
-  width: 35px;
-  height: 35px;
-  transition: transform 0.3s, filter 0.3s;
-}
-
-.social-icon:hover {
-  filter: grayscale(0%);
-  transform: scale(1.2);
-}
-
-/* Projects Grid */
-.projects-title {
-  font-size: 18px;
-  color: #ffffff;
-  margin: 20px 0;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  max-height: 270px;
-  /* box-shadow: rgba(0, 0, 0, 1) 0px -50px 36px -28px ;  max-width: 400px; */
-
-}
-
-/* Project Image */
-.project-image {
-  width: 100%;
-  border-radius: 10px;
-  object-fit: cover;
+.profile-image-container {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background: #000;
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
   overflow: hidden;
 }
 
-/* Responsive Design for Tablet */
-@media (max-width: 1024px) {
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Profile Information */
+.profile-info {
+  padding: 60px 20px 20px;
+}
+
+.profile-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.profile-title {
+  font-size: 16px;
+  color: grey;
+  margin: 5px 0;
+}
+
+.profile-company {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+/* 
+.social-icon:hover {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+} */
+
+/* Companies Section */
+.company-logos {
+  margin: 10px 20px;
+  padding: 0 15px;
+}
+
+.company-logos-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: lightgrey;
+  margin-bottom: 10px;
+}
+
+.company-logos-list {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  max-height: 220px; /* Restricts height to two lines */
+  overflow-y: auto; /* Adds scroll behavior if content exceeds max-height */
+}
+
+/* Optional: Style the scrollbar */
+.company-logos-list::-webkit-scrollbar {
+  width: 6px; /* Width of the scrollbar */
+}
+
+.company-logos-list::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scroll thumb */
+  border-radius: 4px; /* Rounded edges */
+}
+
+.company-logos-list::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker color on hover */
+}
+
+.company-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.company-logo:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* vCard Download Icon */
+.vcard-download {
+  position: absolute; /* Position relative to the .profile-card */
+  top: 15px; /* Positioned inside the card */
+  right: 15px; /* Positioned inside the card */
+  z-index: 1; /* Ensure it stays above the card background */
+}
+
+.download-icon {
+  width: 25px; /* Adjusted size for better alignment */
+  height: 25px;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.download-icon:hover {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
+
+/* Footer Section */
+.powered-by {
+  margin-top: 20px; /* Add some spacing above */
+  font-size: 12px;
+  color: #555;
+  text-align: center;
+  padding-bottom: 5px; /* Add spacing at the bottom of the card */
+}
+
+.powered-by a {
+  color: #0073e6; /* Link color */
+  text-decoration: none; /* Remove underline */
+  font-weight: 600;
+  margin-left: 4px; /* Spacing between text and link */
+}
+
+.powered-by a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 400px) {
   .profile-card {
-    padding: 50px 30px 50px 30px;
-    max-width: 350px;
-  }
-  
-
-  .profile-name {
-    font-size: 26px;
+    width: 300px;
   }
 
-  .social-icon {
-    width: 35px;
-    height: 35px;
-
-  }
-  .profile-card {
-    background-color: #000;
-    padding: 50px 30px 50px 30px;
-    border-radius: 15px;
-    text-align: center;
-    /* box-shadow: rgba(0, 0, 0, 1) 0px -50px 36px -28px ;  */
-    box-shadow: rgba(0, 0, 0, 0.95) 0px -50px 36px -28px inset;
-     max-width: 400px;
-    width: 100%;
-    max-height: 550px;
-    margin-bottom: 30px;
-    margin-top: 50px;
+  .profile-info {
+    padding: 50px 15px 15px;
   }
 
-  .projects-grid {
-    grid-template-columns: repeat(3, 1fr); 
+  .social-links {
     gap: 10px;
-    max-height: 240px;
+  }
+
+  .company-logos-list {
+    gap: 10px;
+  }
+
+  .company-logo {
+    width: 100px;
+    height: 100px;
   }
 }
 
-/* Responsive Design for Mobile */
-@media (max-width: 768px) {
-  .profile-card {
-    padding: 50px 30px 50px 30px;
-    max-width: 300px;
-    margin-top: -5px;
-  }
 
-  .profile-name {
-    font-size: 24px;
-  }
 
-  .social-icon {
-    width: 30px;
-    height: 30px;
-  }
+body {
+  --sb-track-color: #232E33;
+  --sb-thumb-color: #000000;
+  --sb-size: 1px;
+}
 
-  .projects-grid {
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 10px;
-  }
+body::-webkit-scrollbar {
+  width: var(--sb-size)
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
   
 }
 
-/* Responsive Design for Small Mobile Screens */
-@media (max-width: 480px) {
-  .profile-card {
-    padding: 50px 30px 50px 30px;
-    max-width: 300px;
-    margin-top: -5px;
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color)
+                     var(--sb-track-color);
   }
-
-  .profile-name {
-    font-size: 18px;
-  }
-
-  .social-icon {
-    width: 35px;
-    height: 35px;
-  }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin: 0;
-  }
-  .projects-title {
-    font-size: 14px;
-    color: #ffffff;
-    margin: 20px 0;
-  }
-  .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-  }
-  .profile-container {
-    position: relative;
-    display: inline-block; 
-    width: 150px; /* Adjust as needed */
-    height: 150px;
-    border-radius: 50%; /* Make the container circular */
-    /* background: linear-gradient(45deg, #ff6ec4, #7873f5);  */
-    padding: 5px; 
-    box-sizing: border-box;
-    overflow: hidden; 
-    z-index: 0;
-  }
-
 }

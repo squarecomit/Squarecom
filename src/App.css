@@ -12,14 +12,14 @@ body {
 /* Profile Card */
 .profile-card {
   background: #ffffff;
-  width: 390px;
+  width: 400px;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   overflow: hidden; /* Clips elements outside the card */
   text-align: center;
   position: relative; /* Allows .vcard-download to position absolutely within this element */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-height: "90dvh";
+  max-height: "500px";
 }
 
 .profile-card:hover {
@@ -98,8 +98,8 @@ body {
 
 /* Companies Section */
 .company-logos {
-  margin: 10px 20px;
-  padding: 0 15px;
+  margin: 10px 10px;
+  padding: 0 10px;
 }
 
 .company-logos-title {
@@ -114,13 +114,13 @@ body {
   justify-content: center;
   gap: 15px;
   flex-wrap: wrap;
-  max-height: 220px; /* Restricts height to two lines */
+  max-height: 200px; /* Restricts height to two lines */
   overflow-y: auto; /* Adds scroll behavior if content exceeds max-height */
 }
 
 /* Optional: Style the scrollbar */
 .company-logos-list::-webkit-scrollbar {
-  width: 6px; /* Width of the scrollbar */
+  width: 2px; /* Width of the scrollbar */
 }
 
 .company-logos-list::-webkit-scrollbar-thumb {
